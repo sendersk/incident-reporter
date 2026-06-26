@@ -1,0 +1,32 @@
+[project]
+name = "incident-reporter"
+version = "0.1.0"
+description = "Incident reporting automation tool"
+requires-python = ">=3.13"
+
+dependencies = [
+    "apscheduler>=3.11.0",
+    "httpx>=0.28.0",
+    "jinja2>=3.1.6",
+    "pydantic>=2.11.0",
+    "pyyaml>=6.0"
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.16.0",
+    "pytest>=9.0.0",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.12.0",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

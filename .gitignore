@@ -1,0 +1,17 @@
+# created by virtualenv automatically
+__pycache__/
+*.py[cod]
+
+.venv/
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+.idea/
+
+reports/
+data/
+
+.coverage
+htmlcov/
