@@ -18,3 +18,9 @@ class AppConfig(BaseModel):
     api: ApiConfig
     storage: StorageConfig
     reports: ReportConfig
+
+
+class Incident(BaseModel):
+    id: int
+    title: str
+    description: str
