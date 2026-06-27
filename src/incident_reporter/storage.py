@@ -11,7 +11,7 @@ class Storage:
     def save(self, incidents: list[Incident]) -> None:
         self.file_path.parent.mkdir(parents=True, exist_ok=True)
 
-        data = [Incident.model_dump() for incident in incidents]
+        data = [incident.model_dump() for incident in incidents]
 
         with self.file_path.open("w", encoding="utf-8") as file:
             json.dump(data, file, indent=2)
