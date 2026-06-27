@@ -1,0 +1,9 @@
+api:
+  url: "https://jsonplaceholder.typicode.com/posts"
+
+storage:
+  file: "data/incidents.json"
+
+reports:
+  markdown: "reports/incident_report.md"
+  html: "reports/incident_report.html"
