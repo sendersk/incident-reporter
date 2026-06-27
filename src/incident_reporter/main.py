@@ -1,13 +1,18 @@
+from .api import ApiClient
 from .config import load_config
+
 
 def main() -> None:
     config = load_config()
 
+    client = ApiClient(config.api)
+    incidents = client.fetch_incidents()
+
     print("=== Incident Reporter ===")
-    print(f"API URL: {config.api.url}")
-    print(f"Storage: {config.storage.file}")
-    print(f"Markdown: {config.reports.markdown}")
-    print(f"HTML: {config.reports.html}")
+    print(f"Fetched incidents: {len(incidents)}")
+
+    print("\nSample incident: ")
+    print(incidents[0])
 
 
 if __name__ == "__main__":
