@@ -1,5 +1,6 @@
 from incident_reporter.api import ApiClient
 from incident_reporter.config import load_config
+from incident_reporter.storage import Storage
 
 
 def main() -> None:
@@ -8,11 +9,12 @@ def main() -> None:
     client = ApiClient(config.api)
     incidents = client.fetch_incidents()
 
+    storage = Storage(config.storage.file)
+    storage.save(incidents)
+
     print("=== Incident Reporter ===")
     print(f"Fetched incidents: {len(incidents)}")
-
-    print("\nSample incident: ")
-    print(incidents[0])
+    print(f"Saved to: {config.storage.file}")
 
 
 if __name__ == "__main__":
