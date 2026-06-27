@@ -1,7 +1,7 @@
 from pathlib import Path
 import yaml
 
-from models import AppConfig
+from incident_reporter.models import AppConfig
 
 CONFIG_PATH = Path("config/config.yaml")
 

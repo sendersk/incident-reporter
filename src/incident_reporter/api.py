@@ -1,5 +1,5 @@
 import httpx
-from .models import Incident, ApiConfig
+from incident_reporter.models import Incident, ApiConfig
 
 
 class ApiClient:

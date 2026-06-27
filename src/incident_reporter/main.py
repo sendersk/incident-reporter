@@ -1,5 +1,5 @@
-from .api import ApiClient
-from .config import load_config
+from incident_reporter.api import ApiClient
+from incident_reporter.config import load_config
 
 
 def main() -> None:
