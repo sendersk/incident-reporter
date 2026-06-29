@@ -1,5 +1,6 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
-from incident_reporter.main import run_pipeline
+
+from incident_reporter.pipeline import run_pipeline
 
 
 class IncidentScheduler:
@@ -7,8 +8,17 @@ class IncidentScheduler:
         self.scheduler = BlockingScheduler()
 
     def start(self) -> None:
-        self.scheduler.add_job(run_pipeline, "interval", seconds=60)
+        self.scheduler.add_job(
+            run_pipeline,
+            trigger="interval",
+            minutes=1,
+            id="incident_report_job",
+            replace_existing=True,
+        )
 
-        print("[SCHEDULER] Started - running every 60 seconds")
+        print("Scheduler started. Generating reports every minute...")
 
-        self.scheduler.start()
+        try:
+            self.scheduler.start()
+        except (KeyboardInterrupt, SystemExit):
+            print("Scheduler stopped.")
