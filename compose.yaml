@@ -1,0 +1,24 @@
+services:
+  incident-reporter:
+    build: .
+
+    container_name: incident-reporter
+
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+      - ./config:/app/config
+
+    command: ["uv", "run", "python", "src/incident_reporter/main.py"]
+
+  incident-reporter-scheduler:
+    build: .
+
+    container_name: incident-reporter-scheduler
+
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+      - ./config:/app/config
+
+    command: ["uv", "run", "python", "src/incident_reporter/main.py", "--schedule"]
