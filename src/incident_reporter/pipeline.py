@@ -10,7 +10,7 @@ def run_pipeline() -> None:
     config = load_config()
 
     # Fetch incidents from REST API
-    client = ApiClient(config.api.url)
+    client = ApiClient(config.api)
     incidents = client.fetch_incidents()
 
     # Save incidents to JSON
